@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 // import { SidebarService } from 'src/app/services/service.index';
 
 @Component({
@@ -8,36 +8,24 @@ import { FormBuilder, FormGroup } from '@angular/forms';
     styles: ['./app.component.css']
 })
 export class AppComponent {
-    options: FormGroup;
-
-    title = 'AngularMaterialGettingStarted';
+    mode = new FormControl('over');
 
     isMenuOpen = true;
-    contentMargin = 240;
 
-    task: string[] = [
-        'Clearning out my closet', 'Take out trash bins', 'Wash car', 'Tank up the motorcycles', 'Go for flight training'
-    ];
-    constructor (fb: FormBuilder) {
-        this.options = fb.group({
-            bottom: 0,
-            fixed: false,
-            top: 0
-        });
-    }
+    constructor () { }
 
-    onToolbarMenuToggle() {
-        console.log('On toolbar toggled', this.isMenuOpen);
-        this.isMenuOpen = !this.isMenuOpen;
+    changeValue(mode) {
 
-        if (!this.isMenuOpen) {
-            this.contentMargin = 70;
+        if (mode.value === 'over') {
+            mode.value = 'side';
+
+            console.log(mode.value);
         } else {
-            this.contentMargin = 240;
+            mode.value = 'over';
+            console.log(mode.value);
         }
+        // console.log(mode);
     }
-    // sidenavEvents(str) {
-    //   console.log(str);
-    // }
+
 
 }

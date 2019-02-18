@@ -19,6 +19,9 @@ import {
     MatCardModule,
     MatCheckboxModule,
     MatInputModule,
+    MatRadioModule,
+    MatGridListModule,
+
 
 } from '@angular/material';
 
@@ -43,7 +46,9 @@ import { AppComponent } from './app.component';
         MatSelectModule,
         ReactiveFormsModule,
         MatCheckboxModule,
-        MatInputModule
+        MatInputModule,
+        MatRadioModule,
+        MatGridListModule
     ],
     exports: [
         FormsModule,
@@ -62,7 +67,9 @@ import { AppComponent } from './app.component';
         MatSelectModule,
         ReactiveFormsModule,
         MatCheckboxModule,
-        MatInputModule
+        MatInputModule,
+        MatRadioModule,
+        MatGridListModule
     ],
     providers: [],
     bootstrap: [AppComponent]
