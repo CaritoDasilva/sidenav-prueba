@@ -1,90 +1,24 @@
-<mat-toolbar id="mainToolbar" color="primary">
-    <mat-icon (click)="sidenav.toggle()" id="toolbarMenu">subject</mat-icon>
-    My Awesome App
-    <span class="toolbar-spacer"></span>
-    <mat-icon class="toolbar-icon" matBadge="8" matBadgePosition="after" matBadgeColor="accent">notifications</mat-icon>
-</mat-toolbar>
-
-<mat-sidenav-container>
-    <mat-sidenav #sidenav [mode]="mode.value">
-
-        <button type="button" mat-icon-button (click)="changeValue(mode)">
-            <mat-icon>arrow_forward</mat-icon>
+<div class="containerSideBar">
+    <div class="fixedSidebar">
+        holis
+        <button class="col arrow-back-menu-button" type="button" mat-icon-button (click)="changeState()">
+            <mat-icon class="arrow-green">arrow_forward
+            </mat-icon>
         </button>
-        <br>
-        <mat-sidenav mode="over" align="start">
-            <mat-icon>home</mat-icon>
-            <h4>soy casita</h4>
+
+    </div>
+    <mat-sidenav-container class="example-container">
+        <mat-sidenav mode="side" opened>
+
+            <button class="col arrow-back-menu-button" type="button" mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon class="arrow-green">arrow_back
+                </mat-icon>
+            </button>
+            <div class="row">
+                <div class="col iconEnd animated slideInLeft" *ngIf="active === false">
+                    <h4>mundo</h4>
+                </div>
+            </div>
         </mat-sidenav>
-    </mat-sidenav>
-
-
-    <mat-sidenav-content>
-        <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
-        <p>
-            <mat-radio-group class="example-radio-group" *ngIf="mode.value === 'side'">
-                <label>Mode:</label>
-                <mat-radio-button value=" over">Over</mat-radio-button>
-                <mat-radio-button value="side">Side</mat-radio-button>
-                <mat-radio-button value="push">Push</mat-radio-button>
-            </mat-radio-group>
-        </p>
-    </mat-sidenav-content>
-</mat-sidenav-container>
-
-
-<!-- <mat-sidenav-container class="example-container">
-    <mat-sidenav [formGroup]="options" formControlName="fixed">
-        <mat-icon (click)="sidenav.toggle()" id="toolbarMenu">subject</mat-icon>
-    </mat-sidenav>
-    <mat-sidenav [formControl]="mode" #sidenav mode="side" value="over" opened class="example-sidenav"
-        [fixedInViewport]="options.value.fixed">
-        <h4>sidenav</h4>
-    </mat-sidenav>
-
-    <mat-sidenav-content position="start" [formGroup]="options">
-        <mat-icon (click)="sidenav.toggle()" id="toolbarMenu">subject</mat-icon>
-        <p>
-            <mat-checkbox formControlName="fixed">Fixed</mat-checkbox>
-        </p>
-
-    </mat-sidenav-content>
-
-</mat-sidenav-container> -->
-
-
-<!-- <mat-list id="menus">
-            <mat-card>
-                <mat-card-header>
-                    <div mat-card-avatar class="avatar"></div>
-
-                    <mat-card-title>John Doe</mat-card-title>
-                    <mat-card-subtitle>Internal</mat-card-subtitle>
-                </mat-card-header>
-            </mat-card>
-            <mat-list-item>
-                <button class="menu-item" mat-flat-button>
-                    <mat-icon>dashboard</mat-icon>
-                    Dashboard
-                </button>
-            </mat-list-item>
-
-            <mat-list-item>
-                <button class="menu-item" mat-flat-button>
-                    <mat-icon>work</mat-icon>
-                    Project
-                </button>
-            </mat-list-item>
-
-            <mat-list-item>
-                <button class="menu-item" mat-flat-button>
-                    <mat-icon>settings_application</mat-icon>
-                    Settings
-                </button>
-            </mat-list-item> -->
-
-<!-- </mat-list> -->
-<!-- </mat-sidenav> -->
-
-
-<!-- </mat-sidenav-container> -->
+    </mat-sidenav-container>
+</div>

@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -21,7 +22,7 @@ import {
     MatInputModule,
     MatRadioModule,
     MatGridListModule,
-
+    MatExpansionModule,
 
 } from '@angular/material';
 
@@ -48,7 +49,9 @@ import { AppComponent } from './app.component';
         MatCheckboxModule,
         MatInputModule,
         MatRadioModule,
-        MatGridListModule
+        MatGridListModule,
+        NgbModule,
+        MatExpansionModule,
     ],
     exports: [
         FormsModule,
@@ -69,7 +72,9 @@ import { AppComponent } from './app.component';
         MatCheckboxModule,
         MatInputModule,
         MatRadioModule,
-        MatGridListModule
+        MatGridListModule,
+        NgbModule,
+        MatExpansionModule
     ],
     providers: [],
     bootstrap: [AppComponent]

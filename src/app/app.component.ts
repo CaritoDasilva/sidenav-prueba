@@ -8,23 +8,17 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
     styles: ['./app.component.css']
 })
 export class AppComponent {
-    mode = new FormControl('over');
-
-    isMenuOpen = true;
+    active: Boolean = false;
 
     constructor () { }
 
-    changeValue(mode) {
-
-        if (mode.value === 'over') {
-            mode.value = 'side';
-
-            console.log(mode.value);
+    changeState() {
+        if (this.active === false) {
+            this.active = true;
         } else {
-            mode.value = 'over';
-            console.log(mode.value);
+            this.active = false;
         }
-        // console.log(mode);
+        console.log(this.active);
     }
 
 
