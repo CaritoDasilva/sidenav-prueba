@@ -18,13 +18,55 @@ mat-sidenav-container {
   }
   
   mat-sidenav {
-    width: 200px;
+    width: 18%;
     color: #fff !important;
     background-color: #3b3e4e !important;
     overflow: hidden !important;
   }
 
-    
+  .arrow-back-menu-button {
+    color: #01b5ad;
+    margin-left: 80% !important;
+  }
+
+  button:focus {outline:0;}
+
+  .agencyInfo {
+    font-size: 12px;
+    font-family: LatamSansLight;
+    color: #fff;
+    display: block;
+  }
+
+  /* Estilos de los acordeones del menú */
+
+  .menuGeneral,
+  .mat-list-item-content,
+  .mat-expansion-indicator::after,
+  .mat-expansion-panel-header-title {
+    background-color: #3b3e4e;
+    color: #fff;    
+    box-shadow: none !important;
+  }
+
+  .pruebaContent {
+    padding-top: 14vh;
+  }
+  .iconsContent {
+    margin-top: 62% !important;
+    padding: 0 !important;
+  }
+  .iconsMenu {
+    padding-left: 25%;
+  }
+
+  .spaceArrowOpenSidenav {
+    height: 9vh;
+  }
+  .mat-expansion-panel-header {
+    margin-top: 20%;
+  }
+   
   .containerSideBar {   
     height: 100%;
   }
@@ -33,13 +75,13 @@ mat-sidenav-container {
     overflow: hidden !important;
   }
 
-    /* Estilos de la barra fija de SIdenav */
+    /* Estilos de la barra fija del Sidenav */
 
     .fixedSidebar {
       width: 5%;  
       height: 100%;  
       color: #fff !important;
       background-color: #3b3e4e !important;
-    }
+  }
 
 /* Fin estilos Sidenav de Material */

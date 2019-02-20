@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
     styles: ['./app.component.css']
 })
 export class AppComponent {
+    panelOpenState = false;
     active: Boolean = false;
 
     constructor () { }
@@ -20,6 +21,10 @@ export class AppComponent {
             this.active = false;
         }
         console.log(this.active);
+    }
+
+    openSubmenu(event) {
+        console.log(event);
     }
 
 
