@@ -6,6 +6,9 @@
 html, body {
   height: 100%;
 }
+
+/* Estilos Sidenav de Material */
+
 mat-sidenav-container {
     position: absolute !important;
     top: 0;
@@ -20,20 +23,23 @@ mat-sidenav-container {
     background-color: #3b3e4e !important;
     overflow: hidden !important;
   }
-  
-  .fixedSidebar {
-    width: 5%;  
-    height: 100%;  
-    color: #fff !important;
-    background-color: #3b3e4e !important;
-  }
-  
-  .containerSideBar {
-   
+
+    
+  .containerSideBar {   
     height: 100%;
   }
-  
+    
   .mat-drawer-inner-container {
     overflow: hidden !important;
   }
 
+    /* Estilos de la barra fija de SIdenav */
+
+    .fixedSidebar {
+      width: 5%;  
+      height: 100%;  
+      color: #fff !important;
+      background-color: #3b3e4e !important;
+    }
+
+/* Fin estilos Sidenav de Material */

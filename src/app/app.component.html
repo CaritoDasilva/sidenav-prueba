@@ -1,21 +1,23 @@
 <div class="containerSideBar">
     <div class="fixedSidebar">
         holis
-        <button class="col arrow-back-menu-button" type="button" mat-icon-button (click)="changeState()">
+        <button class="col arrow-back-menu-button" type="button" mat-icon-button
+            (click)="changeState(); sidenav.toggle()" *ngIf="active === false">
             <mat-icon class="arrow-green">arrow_forward
             </mat-icon>
         </button>
 
     </div>
     <mat-sidenav-container class="example-container">
-        <mat-sidenav mode="side" opened>
+        <mat-sidenav #sidenav mode="side">
 
-            <button class="col arrow-back-menu-button" type="button" mat-icon-button (click)="sidenav.toggle()">
+            <button class="col arrow-back-menu-button" type="button" mat-icon-button
+                (click)="changeState(); sidenav.toggle()">
                 <mat-icon class="arrow-green">arrow_back
                 </mat-icon>
             </button>
             <div class="row">
-                <div class="col iconEnd animated slideInLeft" *ngIf="active === false">
+                <div class="col iconEnd" *ngIf="active === false">
                     <h4>mundo</h4>
                 </div>
             </div>
