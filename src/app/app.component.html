@@ -1,41 +1,58 @@
-<div class="containerSideBar">
+<div class="containerSideBar" #containerSideBar>
     <div class="fixedSidebar">
-        <button class="col arrow-forward-menu-button" type="button" mat-icon-button
-            (click)="changeState(); sidenav.toggle()" *ngIf="active === false">
+        <button class="col arrow-forward-menu-button" type="button" mat-icon-button (click)="changeState(); sidenav.toggle()"
+            *ngIf="active === false">
             <mat-icon class="arrow-green iconsMenu">arrow_forward
             </mat-icon>
         </button>
         <div class="spaceArrowOpenSidenav" *ngIf="active === true"></div>
-        <mat-accordion>
+        <mat-accordion #iconsAccordion="matAccordion" multi="true">
             <div class="pruebaContent">
-                <mat-expansion-panel class="menuGeneral" hideToggle="true">
-                    <mat-expansion-panel-header class="iconsContent">
-                        <mat-panel-title>
+                <mat-expansion-panel #iconFarematch class="menuGeneral" [expanded]="generalSubmenu" (mouseover)="handleMouseHoverGeneral('hoverColorMenuGeneral')"
+                    (mouseleave)="handleMouseHoverOverGeneral('hoverColorMenuGeneral')" className="general" (click)="openCloseGeneral();"
+                    hideToggle="true">
+                    <mat-expansion-panel-header class="iconsContent" [ngStyle]="{'background-color': hoverColorMenuGeneral}">
+                        <mat-panel-title [ngStyle]="{'background-color': hoverColorMenuGeneral}">
                             <mat-icon class="iconsMenu">settings</mat-icon>
                         </mat-panel-title>
                     </mat-expansion-panel-header>
+                    <mat-nav-list>
+                        <a mat-list-item href=""></a>
+                    </mat-nav-list>
                 </mat-expansion-panel>
-                <mat-expansion-panel class="menuGeneral" hideToggle="true">
-                    <mat-expansion-panel-header class="iconsContent">
-                        <mat-panel-title>
+                <mat-expansion-panel class="menuGeneral" [expanded]="farematchSubmenu" (click)="openCloseFarematch()"
+                    hideToggle="true" (mouseover)="handleMouseHoverFarematch('hoverColorMenuGeneral')" (mouseleave)="handleMouseHoverFarematch('hoverColorMenuGeneral')">
+                    <mat-expansion-panel-header class="iconsContent" [ngStyle]="{'background-color': hoverColorMenuFarematch}">
+                        <mat-panel-title [ngStyle]="{'background-color': hoverColorMenuFarematch}">
                             <mat-icon class="iconsMenu">settings</mat-icon>
                         </mat-panel-title>
                     </mat-expansion-panel-header>
+                    <mat-nav-list dense>
+                        <a mat-list-item href=""></a>
+                        <a mat-list-item href=""></a>
+                        <a mat-list-item href=""></a>
+                        <a mat-list-item href=""></a>
+                    </mat-nav-list>
                 </mat-expansion-panel>
-                <mat-expansion-panel class="menuGeneral" hideToggle="true">
-                    <mat-expansion-panel-header class="iconsContent">
+                <mat-expansion-panel class="menuGeneral" [expanded]="waiverSubmenu" (click)="openCloseWaiver()"
+                    hideToggle="true" (mouseover)="handleMouseHoverWaiver('hoverColorMenuWaiver')" (mouseleave)="handleMouseHoverOverWaiver('hoverColorMenuWaiver')">
+                    <mat-expansion-panel-header class="iconsContent" [ngStyle]="{'background-color': hoverColorMenuWaiver}">
                         <mat-panel-title>
-                            <mat-icon class="iconsMenu">settings</mat-icon>
+                            <mat-icon class="iconsMenu" [ngStyle]="{'background-color': hoverColorMenuWaiver}">settings</mat-icon>
                         </mat-panel-title>
                     </mat-expansion-panel-header>
+                    <mat-nav-list dense>
+                        <a mat-list-item href=""></a>
+                        <a mat-list-item href=""></a>
+                        <a mat-list-item href=""></a>
+                    </mat-nav-list>
                 </mat-expansion-panel>
             </div>
         </mat-accordion>
     </div>
     <mat-sidenav-container class="example-container">
         <mat-sidenav #sidenav mode="side">
-            <button class="col arrow-back-menu-button" type="button" mat-icon-button
-                (click)="changeState(); sidenav.toggle()">
+            <button class="col arrow-back-menu-button" type="button" mat-icon-button (click)="changeState(); sidenav.toggle()">
                 <mat-icon class="arrow-green">arrow_back
                 </mat-icon>
             </button>
@@ -56,18 +73,23 @@
                     <span>FLYTOUR AGENCIA IMAFLORA</span>
                 </div>
             </div>
-            <mat-accordion>
-                <mat-expansion-panel class="menuGeneral">
-                    <mat-expansion-panel-header (click)="openSubmenu($EventEmitter)">
-                        <mat-panel-title>
+            <mat-accordion multi="true">
+                <mat-expansion-panel class="menuGeneral" [expanded]="generalSubmenu" (click)="openCloseGeneral()"
+                    (mouseover)="handleMouseHoverGeneral('hoverColorMenuGeneral')" (mouseleave)="handleMouseHoverOverGeneral('hoverColorMenuGeneral')"
+                    className="general">
+                    <mat-expansion-panel-header [ngStyle]="{'background-color': hoverColorMenuGeneral}">
+                        <mat-panel-title [ngStyle]="{'background-color': hoverColorMenuGeneral}">
                             General
                         </mat-panel-title>
                     </mat-expansion-panel-header>
-                    Blockout
+                    <mat-nav-list dense>
+                        <a mat-list-item href="">Blockout</a>
+                    </mat-nav-list>
                 </mat-expansion-panel>
-                <mat-expansion-panel class="menuGeneral">
-                    <mat-expansion-panel-header (click)="openSubmenu($EventEmitter)">
-                        <mat-panel-title>
+                <mat-expansion-panel class="menuGeneral" [expanded]="farematchSubmenu" (click)="openCloseFarematch()"
+                    (mouseover)="handleMouseHoverFarematch('hoverColorMenuFarematch')" (mouseleave)="handleMouseHoverOverFarematch('hoverColorMenuFarematch')">
+                    <mat-expansion-panel-header [ngStyle]="{'background-color': hoverColorMenuFarematch}">
+                        <mat-panel-title [ngStyle]="{'background-color': hoverColorMenuFarematch}">
                             Farematch
                         </mat-panel-title>
                     </mat-expansion-panel-header>
@@ -78,19 +100,20 @@
                         <a mat-list-item href="">Up Sale</a>
                     </mat-nav-list>
                 </mat-expansion-panel>
+                <mat-expansion-panel class="menuGeneral" [expanded]="waiverSubmenu" (click)="openCloseWaiver()"
+                    (mouseover)="handleMouseHoverWaiver('hoverColorMenuWaiver')" (mouseleave)="handleMouseHoverOverWaiver('hoverColorMenuWaiver')">
+                    <mat-expansion-panel-header [ngStyle]="{'background-color': hoverColorMenuWaiver}">
+                        <mat-panel-title [ngStyle]="{'background-color': hoverColorMenuWaiver}">
+                            Waiver
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-nav-list dense>
+                        <a mat-list-item href="">ADVP</a>
+                        <a mat-list-item href="">Min Stay</a>
+                        <a mat-list-item href="">Max Stay</a>
+                    </mat-nav-list>
+                </mat-expansion-panel>
             </mat-accordion>
-            <mat-expansion-panel class="menuGeneral">
-                <mat-expansion-panel-header (click)="openSubmenu($EventEmitter)">
-                    <mat-panel-title>
-                        Waiver
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <mat-nav-list dense>
-                    <a mat-list-item href="">ADVP</a>
-                    <a mat-list-item href="">Min Stay</a>
-                    <a mat-list-item href="">Max Stay</a>
-                </mat-nav-list>
-            </mat-expansion-panel>
         </mat-sidenav>
     </mat-sidenav-container>
 </div>

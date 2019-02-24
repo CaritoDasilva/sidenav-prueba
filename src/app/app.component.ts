@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
+import { CdkAccordionItem } from '@angular/cdk/accordion';
+import { MatAccordion, MatExpansionPanel } from '@angular/material';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 // import { SidebarService } from 'src/app/services/service.index';
 
@@ -8,11 +10,25 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
     templateUrl: './app.component.html',
     styles: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     panelOpenState = false;
     active: Boolean = false;
+    generalSubmenu: Boolean = false;
+    farematchSubmenu: Boolean = false;
+    waiverSubmenu: Boolean = false;
+    hoverColorMenuGeneral: String = '#3b3e4e';
+    hoverColorMenuFarematch: String = '#3b3e4e';
+    hoverColorMenuWaiver: String = '#3b3e4e';
+    selected: Boolean = false;
 
-    constructor () { }
+    constructor(private renderer: Renderer2, private el: ElementRef) { }
+
+    ngOnInit() { // Recién en este punto tendrás acceso al valor
+        Object.entries(this.el.nativeElement).forEach(element => {
+
+            console.log(element);
+        });
+    }
 
     changeState() {
         if (this.active === false) {
@@ -27,8 +43,54 @@ export class AppComponent {
         console.log(event);
     }
 
+    openCloseGeneral() {
+        this.generalSubmenu = !this.generalSubmenu;
+        this.waiverSubmenu = false;
+        this.farematchSubmenu = false;
+    }
 
+    openCloseFarematch() {
+        this.farematchSubmenu = !this.farematchSubmenu;
+        this.waiverSubmenu = false;
+        this.generalSubmenu = false;
+    }
 
+    openCloseWaiver() {
+        this.waiverSubmenu = !this.waiverSubmenu;
+        this.generalSubmenu = false;
+        this.farematchSubmenu = false;
+    }
 
+    handleMouseHoverGeneral(hoverColorMenu) {
+        // this.selected = className;         
+
+        this.hoverColorMenuGeneral = '#01b5ad';
+    }
+
+    handleMouseHoverFarematch() {
+        this.hoverColorMenuFarematch = '#01b5ad';
+    }
+
+    handleMouseHoverWaiver() {
+        this.hoverColorMenuWaiver = '#01b5ad';
+        console.log(this.hoverColorMenuGeneral);
+
+    }
+
+    handleMouseHoverOverGeneral(hoverColorMenu) {
+        this.hoverColorMenuGeneral = '#3b3e4e';
+    }
+
+    handleMouseHoverOverFarematch() {
+
+        this.hoverColorMenuFarematch = '#3b3e4e';
+    }
+
+    handleMouseHoverOverWaiver() {
+
+        this.hoverColorMenuWaiver = '#3b3e4e';
+        console.log(this.hoverColorMenuWaiver);
+
+    }
 
 }

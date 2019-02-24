@@ -1,8 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import '../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import "~bootstrap/dist/css/bootstrap.css";
-
-
 html, body {
   height: 100%;
 }
@@ -10,78 +9,81 @@ html, body {
 /* Estilos Sidenav de Material */
 
 mat-sidenav-container {
-    position: absolute !important;
-    top: 0;
-    bottom: 0;
-    left: 5%;
-    right: 0;
-  }
-  
-  mat-sidenav {
-    width: 18%;
-    color: #fff !important;
-    background-color: #3b3e4e !important;
-    overflow: hidden !important;
-  }
+  position: absolute !important;
+  top: 0;
+  bottom: 0;
+  left: 5%;
+  right: 0;
+  width: 100%;
+}
 
-  .arrow-back-menu-button {
-    color: #01b5ad;
-    margin-left: 80% !important;
-  }
+mat-sidenav {
+  width: 33%;
+  color: #fff !important;
+  background-color: #3b3e4e !important;
+  overflow: hidden !important;
+}
 
-  button:focus {outline:0;}
+.arrow-back-menu-button {
+  color: #01b5ad;
+  margin-left: 80% !important;
+}
 
-  .agencyInfo {
-    font-size: 12px;
-    font-family: LatamSansLight;
-    color: #fff;
-    display: block;
-  }
+button:focus {
+  outline: 0;
+}
 
-  /* Estilos de los acordeones del menú */
+.agencyInfo {
+  font-size: 12px;
+  font-family: LatamSansLight;
+  color: #fff;
+  display: block;
+}
 
-  .menuGeneral,
-  .mat-list-item-content,
-  .mat-expansion-indicator::after,
-  .mat-expansion-panel-header-title {
-    background-color: #3b3e4e;
-    color: #fff;    
-    box-shadow: none !important;
-  }
+/* Estilos de los acordeones del menú */
 
-  .pruebaContent {
-    padding-top: 14vh;
-  }
-  .iconsContent {
-    margin-top: 62% !important;
-    padding: 0 !important;
-  }
-  .iconsMenu {
-    padding-left: 25%;
-  }
+.menuGeneral, .mat-list-item-content, .mat-expansion-indicator::after, .mat-expansion-panel-header-title {
+  background-color: #3b3e4e;
+  color: #fff;
+  box-shadow: none !important;
+}
 
-  .spaceArrowOpenSidenav {
-    height: 9vh;
-  }
-  .mat-expansion-panel-header {
-    margin-top: 20%;
-  }
-   
-  .containerSideBar {   
-    height: 100%;
-  }
-    
-  .mat-drawer-inner-container {
-    overflow: hidden !important;
-  }
+.pruebaContent {
+  padding-top: 9vh;
+}
 
-    /* Estilos de la barra fija del Sidenav */
+.iconsContent {
+  margin-top: 120% !important;
+  padding: 0 !important;
+}
 
-    .fixedSidebar {
-      width: 5%;  
-      height: 100%;  
-      color: #fff !important;
-      background-color: #3b3e4e !important;
-  }
+.iconsMenu {
+  padding-left: 25%;
+}
+
+.spaceArrowOpenSidenav {
+  height: 7vh;
+}
+
+.mat-expansion-panel-header {
+  margin-top: 20%;
+}
+
+.containerSideBar {
+  height: 100%;
+}
+
+.mat-drawer-inner-container {
+  overflow: hidden !important;
+}
+
+/* Estilos de la barra fija del Sidenav */
+
+.fixedSidebar {
+  width: 5%;
+  height: 100%;
+  color: #fff !important;
+  background-color: #3b3e4e !important;
+}
 
 /* Fin estilos Sidenav de Material */
