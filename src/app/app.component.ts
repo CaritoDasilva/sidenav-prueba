@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     hoverColorMenuWaiver: String = '#3b3e4e';
     selected: Boolean = false;
 
-    constructor(private renderer: Renderer2, private el: ElementRef) { }
+    constructor (private renderer: Renderer2, private el: ElementRef) { }
 
     ngOnInit() { // Recién en este punto tendrás acceso al valor
         Object.entries(this.el.nativeElement).forEach(element => {
@@ -64,31 +64,31 @@ export class AppComponent implements OnInit {
     handleMouseHoverGeneral(hoverColorMenu) {
         // this.selected = className;         
 
-        this.hoverColorMenuGeneral = '#01b5ad';
+        this.hoverColorMenuGeneral = '#3B3E4E';
     }
 
     handleMouseHoverFarematch() {
-        this.hoverColorMenuFarematch = '#01b5ad';
+        this.hoverColorMenuFarematch = '#3B3E4E';
     }
 
     handleMouseHoverWaiver() {
-        this.hoverColorMenuWaiver = '#01b5ad';
+        this.hoverColorMenuWaiver = '#3B3E4E';
         console.log(this.hoverColorMenuGeneral);
 
     }
 
     handleMouseHoverOverGeneral(hoverColorMenu) {
-        this.hoverColorMenuGeneral = '#3b3e4e';
+        this.hoverColorMenuGeneral = '#333645';
     }
 
     handleMouseHoverOverFarematch() {
 
-        this.hoverColorMenuFarematch = '#3b3e4e';
+        this.hoverColorMenuFarematch = '#333645';
     }
 
     handleMouseHoverOverWaiver() {
 
-        this.hoverColorMenuWaiver = '#3b3e4e';
+        this.hoverColorMenuWaiver = '#333645';
         console.log(this.hoverColorMenuWaiver);
 
     }
