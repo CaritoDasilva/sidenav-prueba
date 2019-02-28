@@ -1,61 +1,21 @@
 <div class="containerSideBar" #containerSideBar>
     <div class="fixedSidebar">
         <button class="col arrow-forward-menu-button" type="button" mat-icon-button
-            (click)="changeState(); sidenav.toggle()" *ngIf="active === false">
+            (click)="changeState(); sidenav.toggle()" *ngIf="activeSidenav === false">
             <mat-icon class="arrow-green iconsMenu">arrow_forward
             </mat-icon>
         </button>
-        <div class="spaceArrowOpenSidenav" *ngIf="active === true"></div>
-        <mat-accordion #iconsAccordion="matAccordion" multi="true">
-            <div class="pruebaContent">
-                <mat-expansion-panel #iconFarematch class="menuGeneral" [expanded]="generalSubmenu"
-                    (mouseover)="handleMouseHoverGeneral('hoverColorMenuGeneral')"
-                    (mouseleave)="handleMouseHoverOverGeneral('hoverColorMenuGeneral')" className="general"
-                    (click)="openCloseGeneral();" hideToggle="true">
-                    <mat-expansion-panel-header class="iconsContent"
-                        [ngStyle]="{'background-color': hoverColorMenuGeneral}">
-                        <mat-panel-title [ngStyle]="{'background-color': hoverColorMenuGeneral}">
-                            <mat-icon class="iconsMenu">settings</mat-icon>
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <mat-nav-list dense>
-                        <a mat-list-item href=""></a>
-                    </mat-nav-list>
-                </mat-expansion-panel>
-                <mat-expansion-panel class="menuGeneral" [expanded]="farematchSubmenu" (click)="openCloseFarematch()"
-                    hideToggle="true" (mouseover)="handleMouseHoverFarematch('hoverColorMenuGeneral')"
-                    (mouseleave)="handleMouseHoverFarematch('hoverColorMenuGeneral')">
-                    <mat-expansion-panel-header class="iconsContent"
-                        [ngStyle]="{'background-color': hoverColorMenuFarematch}">
-                        <mat-panel-title [ngStyle]="{'background-color': hoverColorMenuFarematch}">
-                            <mat-icon class="iconsMenu">settings</mat-icon>
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <mat-nav-list dense>
-                        <a mat-list-item href=""></a>
-                        <a mat-list-item href=""></a>
-                        <a mat-list-item href=""></a>
-                        <a mat-list-item href=""></a>
-                    </mat-nav-list>
-                </mat-expansion-panel>
-                <mat-expansion-panel class="menuGeneral" [expanded]="waiverSubmenu" (click)="openCloseWaiver()"
-                    hideToggle="true" (mouseover)="handleMouseHoverWaiver('hoverColorMenuWaiver')"
-                    (mouseleave)="handleMouseHoverOverWaiver('hoverColorMenuWaiver')">
-                    <mat-expansion-panel-header class="iconsContent"
-                        [ngStyle]="{'background-color': hoverColorMenuWaiver}">
-                        <mat-panel-title [ngStyle]="{'background-color': hoverColorMenuWaiver}">
-                            <mat-icon class="iconsMenu">settings
-                            </mat-icon>
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <mat-nav-list dense>
-                        <a mat-list-item href=""></a>
-                        <a mat-list-item href=""></a>
-                        <a mat-list-item href=""></a>
-                    </mat-nav-list>
-                </mat-expansion-panel>
+        <div class="spaceArrowOpenSidenav" *ngIf="activeSidenav === true"></div>
+        <div class="pruebaContent">
+            <div *ngFor="let menu of listMenu; index as i" class="accordion" (click)="changeAccordionStatus(i)">
+                <button mat-button>
+                    <mat-icon class="iconsMenu">{{menu.iconMenu}}</mat-icon>
+                </button>
+                <div class="panel infoHidden" *ngIf="menu.active === true">
+                    <p *ngFor="let submenu of menu.submenu; index as i">{{submenu.title}}</p>
+                </div>
             </div>
-        </mat-accordion>
+        </div>
     </div>
     <mat-sidenav-container class="example-container">
         <mat-sidenav #sidenav mode="side">
@@ -81,49 +41,16 @@
                     <span>FLYTOUR AGENCIA IMAFLORA</span>
                 </div>
             </div>
-            <mat-accordion multi="true">
-                <mat-expansion-panel class="menuGeneral" [expanded]="generalSubmenu" (click)="openCloseGeneral()"
-                    (mouseover)="handleMouseHoverGeneral('hoverColorMenuGeneral')"
-                    (mouseleave)="handleMouseHoverOverGeneral('hoverColorMenuGeneral')" className="general">
-                    <mat-expansion-panel-header [ngStyle]="{'background-color': hoverColorMenuGeneral}">
-                        <mat-panel-title [ngStyle]="{'background-color': hoverColorMenuGeneral}">
-                            General
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <mat-nav-list dense>
-                        <a mat-list-item href="">Blockout</a>
-                    </mat-nav-list>
-                </mat-expansion-panel>
-                <mat-expansion-panel class="menuGeneral" [expanded]="farematchSubmenu" (click)="openCloseFarematch()"
-                    (mouseover)="handleMouseHoverFarematch('hoverColorMenuFarematch')"
-                    (mouseleave)="handleMouseHoverOverFarematch('hoverColorMenuFarematch')">
-                    <mat-expansion-panel-header [ngStyle]="{'background-color': hoverColorMenuFarematch}">
-                        <mat-panel-title [ngStyle]="{'background-color': hoverColorMenuFarematch}">
-                            Farematch
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <mat-nav-list dense>
-                        <a mat-list-item href="">Codeshare</a>
-                        <a mat-list-item href="">Indicadores</a>
-                        <a mat-list-item href="">Tarifa Mínima</a>
-                        <a mat-list-item href="">Up Sale</a>
-                    </mat-nav-list>
-                </mat-expansion-panel>
-                <mat-expansion-panel class="menuGeneral" [expanded]="waiverSubmenu" (click)="openCloseWaiver()"
-                    (mouseover)="handleMouseHoverWaiver('hoverColorMenuWaiver')"
-                    (mouseleave)="handleMouseHoverOverWaiver('hoverColorMenuWaiver')">
-                    <mat-expansion-panel-header [ngStyle]="{'background-color': hoverColorMenuWaiver}">
-                        <mat-panel-title [ngStyle]="{'background-color': hoverColorMenuWaiver}">
-                            Waiver
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <mat-nav-list dense>
-                        <a mat-list-item href="">ADVP</a>
-                        <a mat-list-item href="">Min Stay</a>
-                        <a mat-list-item href="">Max Stay</a>
-                    </mat-nav-list>
-                </mat-expansion-panel>
-            </mat-accordion>
+            <div class="accordionLeft">
+                <div *ngFor="let menu of listMenu; index as i" class="accordion accordionLeft"
+                    (click)="changeAccordionStatus(i)">
+                    <button mat-button>{{menu.titleMenu}}
+                    </button>
+                    <div class="panel" *ngIf="menu.active === true">
+                        <p *ngFor="let submenu of menu.submenu; index as i">{{submenu.title}}</p>
+                    </div>
+                </div>
+            </div>
         </mat-sidenav>
     </mat-sidenav-container>
 </div>

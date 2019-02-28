@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
-import { CdkAccordionItem } from '@angular/cdk/accordion';
-import { MatAccordion, MatExpansionPanel } from '@angular/material';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-// import { SidebarService } from 'src/app/services/service.index';
+import { MenuService } from './menu.service';
+import { Sidenav } from './sidenav.model';
 
 
 @Component({
@@ -11,86 +9,28 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
     styles: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    panelOpenState = false;
-    active: Boolean = false;
-    generalSubmenu: Boolean = false;
-    farematchSubmenu: Boolean = false;
-    waiverSubmenu: Boolean = false;
-    hoverColorMenuGeneral: String = '#3b3e4e';
-    hoverColorMenuFarematch: String = '#3b3e4e';
-    hoverColorMenuWaiver: String = '#3b3e4e';
-    selected: Boolean = false;
+    listMenu: Sidenav[];
+    activeSidenav: Boolean = false;
 
-    constructor (private renderer: Renderer2, private el: ElementRef) { }
+    constructor (private menuService: MenuService) { }
+    ngOnInit() {
+        console.log(this.menuService.menu);
+        this.getMenu();
+    }
 
-    ngOnInit() { // Recién en este punto tendrás acceso al valor
-        Object.entries(this.el.nativeElement).forEach(element => {
-
-            console.log(element);
-        });
+    getMenu() {
+        this.listMenu = this.menuService.menu;
+        console.log(this.listMenu);
     }
 
     changeState() {
-        if (this.active === false) {
-            this.active = true;
-        } else {
-            this.active = false;
-        }
-        console.log(this.active);
+        this.activeSidenav = !this.activeSidenav;
+        console.log(this.activeSidenav);
     }
 
-    openSubmenu(event) {
-        console.log(event);
-    }
-
-    openCloseGeneral() {
-        this.generalSubmenu = !this.generalSubmenu;
-        this.waiverSubmenu = false;
-        this.farematchSubmenu = false;
-    }
-
-    openCloseFarematch() {
-        this.farematchSubmenu = !this.farematchSubmenu;
-        this.waiverSubmenu = false;
-        this.generalSubmenu = false;
-    }
-
-    openCloseWaiver() {
-        this.waiverSubmenu = !this.waiverSubmenu;
-        this.generalSubmenu = false;
-        this.farematchSubmenu = false;
-    }
-
-    handleMouseHoverGeneral(hoverColorMenu) {
-        // this.selected = className;         
-
-        this.hoverColorMenuGeneral = '#3B3E4E';
-    }
-
-    handleMouseHoverFarematch() {
-        this.hoverColorMenuFarematch = '#3B3E4E';
-    }
-
-    handleMouseHoverWaiver() {
-        this.hoverColorMenuWaiver = '#3B3E4E';
-        console.log(this.hoverColorMenuGeneral);
-
-    }
-
-    handleMouseHoverOverGeneral(hoverColorMenu) {
-        this.hoverColorMenuGeneral = '#333645';
-    }
-
-    handleMouseHoverOverFarematch() {
-
-        this.hoverColorMenuFarematch = '#333645';
-    }
-
-    handleMouseHoverOverWaiver() {
-
-        this.hoverColorMenuWaiver = '#333645';
-        console.log(this.hoverColorMenuWaiver);
-
+    changeAccordionStatus(i) {
+        this.listMenu[i].active = !this.listMenu[i].active;
+        console.log(i);
     }
 
 }
