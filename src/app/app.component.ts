@@ -31,6 +31,12 @@ export class AppComponent implements OnInit {
     changeAccordionStatus(i) {
         this.listMenu[i].active = !this.listMenu[i].active;
         console.log(i);
+        this.listMenu.map(element => {
+            if (element.titleMenu !== this.listMenu[i].titleMenu) {
+                element.active = false;
+                console.log(element);
+            }
+        });
     }
 
 }
